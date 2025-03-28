@@ -16,3 +16,8 @@ vi., 28 de mar. de 2025 20:33:02:
  tests:  12|0
 total_score: 70/70
 ec47da1
+vi., 28 de mar. de 2025 20:58:44: 
+ list.c | 38 +++++++++++++++++++-------------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+ tests:  0|0
+309584c

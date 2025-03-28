@@ -30,7 +30,7 @@ Node * createNode(void * data) {
 
 List * createList() {
     List * list = (List *)malloc(sizeof(List));
-    //assert(list != NULL);
+    assert(list != NULL);
     list->head = NULL;
     list->tail = NULL;
     list->current = NULL;
@@ -74,16 +74,16 @@ void * prevList(List * list) {
 }
 
 void pushFront(List * list, void * data) {
-    Node * new = createNode(data);
+    Node * nuevo = createNode(data);
     if (list->head == NULL) {
-        list->head = new;
-        list->tail = new;
+        list->head = nuevo;
+        list->tail = nuevo;
     } else {
-        new->next = list->head;
-        list->head->prev = new;
-        list->head = new;
+        nuevo->next = list->head;
+        list->head->prev = nuevo;
+        list->head = nuevo;
     }
-    list->current = new;
+    list->current = nuevo;
 }
 
 void pushBack(List * list, void * data) {
@@ -92,21 +92,21 @@ void pushBack(List * list, void * data) {
 }
 
 void pushCurrent(List * list, void * data) {
-    Node * new = createNode(data);
+    Node * nuevo = createNode(data);
     if (list->current == NULL) {
-        list->head = new;
-        list->tail = new;
+        list->head = nuevo;
+        list->tail = nuevo;
     } else {
-        new->next = list->current->next;
-        new->prev = list->current;
+        nuevo->next = list->current->next;
+        nuevo->prev = list->current;
         if (list->current->next != NULL) {
-            list->current->next->prev = new;
+            list->current->next->prev = nuevo;
         } else {
-            list->tail = new;
+            list->tail = nuevo;
         }
-        list->current->next = new;
+        list->current->next = nuevo;
     }
-    list->current = new;
+    list->current = nuevo;
 }
 
 void * popFront(List * list) {
@@ -122,7 +122,7 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
     if (list->current != NULL) {
         Node * temp = list->current;
-        void * data = temp->data;
+        //void * data = temp->data;
         if (temp->prev != NULL) {
             temp->prev->next = temp->next;
         } else {
@@ -134,7 +134,7 @@ void * popCurrent(List * list) {
             list->tail = temp->prev;
         }
         free(temp);
-        return data;
+        //return data;
     }
     return NULL;
 }
