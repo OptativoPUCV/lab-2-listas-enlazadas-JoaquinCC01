@@ -4,3 +4,9 @@ vi., 28 de mar. de 2025 20:29:43:
  tests:  11|1
 total_score: 60/70
 25021aa
+vi., 28 de mar. de 2025 20:31:13: 
+ list.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  11|1
+total_score: 60/70
+2fca1c1
