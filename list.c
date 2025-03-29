@@ -38,7 +38,8 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-    if (list->head != NULL) {
+    if (list->head != NULL) 
+    {
         list->current = list->head;
         return list->current->data;
     }   
@@ -46,9 +47,11 @@ void * firstList(List * list) {
 }
 
 void * nextList(List * list) {
-    if (list->current != NULL) {
+    if (list->current != NULL) 
+    {
         list->current = list->current->next;
-        if (list->current != NULL) {
+        if (list->current != NULL) 
+        {
             return list->current->data;
         }
     }
@@ -56,7 +59,8 @@ void * nextList(List * list) {
 }
 
 void * lastList(List * list) {
-    if (list->tail != NULL) {
+    if (list->tail != NULL) 
+    {
         list->current = list->tail;
         return list->current->data;
     }
@@ -64,9 +68,11 @@ void * lastList(List * list) {
 }
 
 void * prevList(List * list) {
-    if (list->current != NULL) {
+    if (list->current != NULL) 
+    {
         list->current = list->current->prev;
-        if (list->current != NULL) {
+        if (list->current != NULL) 
+        {
             return list->current->data;
         }
     }
@@ -75,10 +81,13 @@ void * prevList(List * list) {
 
 void pushFront(List * list, void * data) {
     Node * nuevo = createNode(data);
-    if (list->head == NULL) {
+    if (list->head == NULL) 
+    {
         list->head = nuevo;
         list->tail = nuevo;
-    } else {
+    } 
+    else 
+    {
         nuevo->next = list->head;
         list->head->prev = nuevo;
         list->head = nuevo;
@@ -93,15 +102,21 @@ void pushBack(List * list, void * data) {
 
 void pushCurrent(List * list, void * data) {
     Node * nuevo = createNode(data);
-    if (list->current == NULL) {
+    if (list->current == NULL) //si la lista esta vacia
+    {
         list->head = nuevo;
         list->tail = nuevo;
-    } else {
+    } 
+    else //si hay un nodo
+    {
         nuevo->next = list->current->next;
         nuevo->prev = list->current;
-        if (list->current->next != NULL) {
+        if (list->current->next != NULL) //mientras el siguiente no sea NULL
+        {
             list->current->next->prev = nuevo;
-        } else {
+        } 
+        else //si el siguiente es NUll
+        {
             list->tail = nuevo;
         }
         list->current->next = nuevo;
@@ -120,17 +135,24 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    if (list->current != NULL) {
+    if (list->current != NULL) //si la lista no esta vacia
+    {
         Node * temp = list->current;
         void * data = temp->data;
-        if (temp->prev != NULL) {
+        if (temp->prev != NULL) //si no es el primero
+        {
             temp->prev->next = temp->next;
-        } else {
-            list->head = temp->next;
+        } 
+        else 
+        {
+            list->head = temp->next; //si es el primero
         }
-        if (temp->next != NULL) {
+        if (temp->next != NULL) //si no es el ultimo
+        {
             temp->next->prev = temp->prev;
-        } else {
+        } 
+        else //si es el ultimo
+        {
             list->tail = temp->prev;
         }
         free(temp);
